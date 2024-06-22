@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*5*qs&r5v!g*+@zl9q1nf8(g89@u#=u9^#0+=nh4*-dyr2^(*e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Teacher',
+    'student',
+    'book'
 ]
 
 MIDDLEWARE = [
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/"Teacher/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
