@@ -1,0 +1,15 @@
+<!-- update_books_checked_in.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books Checked In</title>
+</head>
+<body>
+    <h1>Books Checked In</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
