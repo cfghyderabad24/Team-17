@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-In and Check-Out</title>
+    <link rel="stylesheet" href="addstyle.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="form-container check-in-out-container">
+        <div class="check-in-container">
+            <h2>Check-In</h2>
+            <form onsubmit="handleCheckInSubmit(event)">
+                <div class="form-group">
+                    <label for="checkin_userid">User ID</label>
+                    <select id="checkin_userid" name="userid" required>
+                        <!-- Placeholder option -->
+                        <option value="">Select User ID</option>
+                        <!-- Options will be dynamically populated -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="checkin_date">Check-In Date</label>
+                    <input type="date" id="checkin_date" name="checkindate" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkin_time">Check-In Time</label>
+                    <input type="time" id="checkin_time" name="checkintime" required>
+                </div>
+                <button type="submit">Check In</button>
+            </form>
+        </div>
+        <div class="check-out-container">
+            <h2>Check-Out</h2>
+            <form onsubmit="handleCheckOutSubmit(event)">
+                <div class="form-group">
+                    <label for="checkout_userid">User ID</label>
+                    <select id="checkout_userid" name="userid" required>
+                        <!-- Placeholder option -->
+                        <option value="">Select User ID</option>
+                        <!-- Options will be dynamically populated -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="checkout_date">Check-Out Date</label>
+                    <input type="date" id="checkout_date" name="checkoutdate" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout_time">Check-Out Time</label>
+                    <input type="time" id="checkout_time" name="checkouttime" required>
+                </div>
+                <button type="submit">Check Out</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
