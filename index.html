@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="icon/x-icon" href="images/4.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="icon/x-icon" href="/images/icon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Dashboard</title>
+    <style>
+         #barChart1 {
+            width: 200% !important;
+            height: 300px !important;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+         #pieChart1 {
+            width: 250% !important;
+            height: 300px !important;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <span class="primary material-icons-sharp">
+                        layers
+                        </span>
+                    <h2>ROOMT<span class="primary">OREAD</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="#" class="active">
+                    <!-- <span class="material-icons-sharp">grid_view</span> -->
+                    <h3>Monthly report</h3>
+                </a>
+                <a href="Add Student.html" >
+                    <!-- <span class="material-icons-sharp">person_outline</span> -->
+                    <h3>Add Student</h3>
+                </a>
+                <a href="Add Book.html">
+                    <!-- <span class="material-icons-sharp">dehaze</span> -->
+                    <h3>Add Book</h3>
+                </a>
+                <a href="check-in and check-out.html">
+                    <!-- <span class="material-icons-sharp">forum</span> -->
+                    <h3>Check-in and out</h3>
+                </a>
+                <a href="/index.html">
+                    <span class="material-icons-sharp">mail_outline</span>
+                    <h3>Student report</h3>
+                    <!--<span class="message-count">18</span>-->
+                </a>
+                <!--<a href="#">
+                    <span class="material-icons-sharp">report_gmailerrorred</span>
+                    <h3>Reports</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">settings</span>
+                    <h3>Settings</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">phone</span>
+                    <h3>Support</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3 onclick="logout()">Logout</h3>
+                </a>-->
+                <div>
+                    <button><a href="loginpage.html">Back</a></button>
+                </div>
+            </div>
+        </aside>
+        <main id="log">
+            <h1>Dashboard</h1>
+            <!-- <div style="display: flex;justify-content:50px;">
+              <p style="margin-left: 10px;">From</p>
+              <p style="margin-left: 100px;">To</p>
+            </div>
+             -->
+            <div style="display: flex;margin-top:2px;">
+              
+              <!-- <div style="margin-left: 50px;" class="date">
+                <input type="date">
+            </div>
+            
+            <div class="date">
+              <input type="date">
+          </div> -->
+          <div class="data-container">
+            <div class="date">
+                <label for="dateForm">From:</label>
+                <input type="date" id="dateFrom">
+            </div>
+            <div class="date">
+                <label for="dateTo">To:</label>
+                <input type="date" id="dateFrom">
+
+            </div>
+          </div>
+            </div>
+            
+            <!-- <div class="insights">
+                <div class="sales">
+                    <span class="material-icons-sharp">facebook</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Facebook</h3>
+                            <h1>25L+</h1>
+                            <h6>subscribers</h6>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>81%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 Hours</small>
+                </div>
+                <div class="expenses">
+                    <span class="material-icons-sharp"><i class="fa-brands fa-instagram"></i></span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Instagram</h3>
+                            <h1>14L+</h1>
+                            <h6>subscribers</h6>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>62%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 Hours</small>
+                </div>
+                <div class="income">
+                    <span class="material-icons-sharp"><i class="fa-brands fa-twitter"></i></span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Twitter</h3>
+                            <h1>18L+</h1>
+                            <h6>Subscriptions</h6>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>44%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 Hours</small>
+                </div>
+            </div> -->
+            <div class="content"> 
+              <div class="bar-charts" >
+              <canvas id="barChart1"></canvas>
+            </div>
+              <div class="pie-charts">
+                  <canvas id="pieChart1"></canvas>
+              </div>
+            </div>
+              <div class="container">
+                <canvas id="lineChart"></canvas>
+            </div>
+          
+          
+            <script>
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    
+                    const ctxBar1 = document.getElementById('barChart1').getContext('2d');
+                    new Chart(ctxBar1, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Comic', 'Fiction', 'mythological', 'horror', 'non-fiction', 'drama'],
+                            datasets: [{
+                                label: 'genres vs checkout',
+                                data: [12,56,47,8,95,50],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+        
+                    
+                    
+                    
+                    const ctxPie1 = document.getElementById('pieChart1').getContext('2d');
+                    new Chart(ctxPie1, {
+                        type: 'pie',
+                        data: {
+                            labels: ['Green','Red','Orange','White','Blue','Yellow'],
+                            datasets: [{
+                                label: '# of checkouts',
+                                data: [15, 13, 11,9,7,5],
+                                backgroundColor: [
+                                    'green',
+                                    'red',
+                                    'orange',
+                                    'White',
+                                    'blue',
+                                    'yellow'
+                                ],
+                                borderColor: [
+                                    'green',
+                                    'red',
+                                    'orange',
+                                    'White',
+                                    'blue',
+                                    'yellow'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true
+                        }
+                    });
+        
+                
+                
+                });
+                const ctxLine = document.getElementById('lineChart').getContext('2d');
+                    const lineChart = new Chart(ctxLine, {
+                        type: 'line',
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                            datasets: [{
+                                label: 'Trend ',
+                                data: [65, 59, 80, 81, 56, 55],
+                                fill: false,
+                                borderColor: 'rgb(75, 192, 192)',
+                                tension: 0.1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                x: {
+                                    display: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Month'
+                                    }
+                                },
+                                y: {
+                                    display: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Value'
+                                    },
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+
+                    // Function to update the line chart data dynamically
+                    function updateLineChartData(newData) {
+                        lineChart.data.datasets[0].data = newData;
+                        lineChart.update();
+                    }
+
+                    // Example of updating the line chart data
+                    setTimeout(() => {
+                        const newChartData = [28, 48, 40, 19, 86, 27];
+                        updateLineChartData(newChartData);
+                    }, 5000); // Update the chart data after 5 seconds
+            </script>
+            <!-- <div class="recent-orders">
+                <h2>Leader Boards</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>App Name</th>
+                            <th>App percentage</th>
+                            <th>Technology</th>
+                            <th>Website Visits</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Facebook</td>
+                            <td>82%</td>
+                            <td>Advanced</td>
+                            <td class="warning">688</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+                            <td>Netflix</td>
+                            <td>78%</td>
+                            <td>Advanced</td>
+                            <td class="warning">532</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+                            <td>Instagram</td>
+                            <td>62%</td>
+                            <td>Advanced</td>
+                            <td class="warning">434</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+                            <td>Snapchat</td>
+                            <td>54%</td>
+                            <td>Advanced</td>
+                            <td class="warning">398</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+                            <td>Twitter</td>
+                            <td>44%</td>
+                            <td>Advanced</td>
+                            <td class="warning">256</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> -->
+        </main>
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="primary material-icons-sharp">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                
+            </div>
+            <div class="recent-updates">
+                <h2>Recent Updates</h2>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <i class="fa-brands fa-message"></i>
+                        </div>
+                        <div class="message">
+                            <p>Student John has a due date for book name:"To Kill a Mockingbird"</p>
+                            <small class="text-muted">2 Minutes Ago</small>
+                        </div>
+                    </div>
+                    <div class="update">
+                        <div class="profile-photo">
+                            <i class="fa-brands fa-message"></i>
+                        </div>
+                        <div class="message">
+                          <p>Student Manish has a due date for book name:"Tintin"</p>
+                            <small class="text-muted">2 Minutes Ago</small>
+                        </div>
+                    </div>
+                    <div class="update">
+                        <div class="profile-photo">
+                            <i class="fa-brands fa-message"></i>
+                        </div>
+                        <div class="message">
+                          <p>Student Ramu has a due date for book name:"Astro boy"</p>
+                            <small class="text-muted">2 Minutes Ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                <script>
+                    document.getElementById("myBtn").onclick=function() {fnctn()}; 
+                    function fnctn(){
+                        document.getElementById("myDropdown").classList.toggle("show");
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+    
+  
+
+    <script src="app.js"></script>
+</body>
+
+</html>
