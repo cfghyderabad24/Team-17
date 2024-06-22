@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+admin.site.site_header="Room to Read Admin"
+admin.site.site_title="Room to Read Admin Panel"
+admin.site.index_title="Welcome to Room to Read Administration site"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('teacher/',include('Teacher.urls')),
+    # path('teacher/',include('Teacher.urls')),
+    path('student/',include('student.urls'))
 ]
