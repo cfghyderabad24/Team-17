@@ -1,0 +1,84 @@
+<!-- book/templates/checkouts_by_genre.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkouts by Genre</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>Checkouts by Genre</h2>
+    <form id="date-range-form">
+        <label for="from_date">From Date:</label>
+        <input type="date" id="from_date" name="from_date" required>
+        <label for="to_date">To Date:</label>
+        <input type="date" id="to_date" name="to_date" required>
+        <button type="button" id="fetch-data">Fetch Data</button>
+    </form>
+    <canvas id="checkouts-chart" style="display:none;"></canvas>
+
+    <script>
+        $(document).ready(function() {
+            $('#fetch-data').click(function() {
+                const fromDate = $('#from_date').val();
+                const toDate = $('#to_date').val();
+
+                if (fromDate && toDate) {  // Ensure both dates are provided
+                    $.ajax({
+                        url: '{% url "get_checkouts_by_genre" %}',
+                        data: {
+                            'from_date': fromDate,
+                            'to_date': toDate
+                        },
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.status === 'success') {
+                                const ctx = $('#checkouts-chart')[0].getContext('2d');
+                                const data = response.data;
+
+                                // Destroy the previous chart instance if it exists
+                                if (window.myBarChart) {
+                                    window.myBarChart.destroy();
+                                }
+
+                                window.myBarChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: data.genres,
+                                        datasets: [{
+                                            label: 'Number of Checkouts',
+                                            data: data.checkout_counts,
+                                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                            borderColor: 'rgba(54, 162, 235, 1)',
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        }
+                                    }
+                                });
+
+                                $('#checkouts-chart').show();
+                            } else {
+                                alert(response.message);
+                                $('#checkouts-chart').hide();
+                            }
+                        },
+                        error: function() {
+                            alert('An error occurred while fetching the data.');
+                            $('#checkouts-chart').hide();
+                        }
+                    });
+                } else {
+                    alert('Please select both From and To dates.');
+                    $('#checkouts-chart').hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

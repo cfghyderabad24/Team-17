@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check In</title>
+</head>
+<body>
+    <h2>Check In</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ checkin_form.student_id.label_tag }} {{ checkin_form.student_id }}
+        <button type="submit" name="search_student">Search</button>
+    </form>
+    {% if checkin_form.fields.book.queryset %}
+    <form method="post">
+        {% csrf_token %}
+        {{ checkin_form.as_p }}
+        <button type="submit" name="checkin_submit">Check In</button>
+    </form>
+    {% endif %}
+</body>
+</html>
